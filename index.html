@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a09">
+  <meta name="description" content="OneFix helps Counter-Strike 2 players identify one meaningful gameplay mistake and turn it into one practical improvement.">
+  <title>OneFix — One player. One mistake. One fix.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#080a09;--panel:#101411;--line:#252c27;--text:#f2f5f2;--muted:#9aa39c;--green:#b7ff38;--green2:#8fd51d}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1120px,calc(100% - 44px));margin:auto}
+    header{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+    .brand{font:800 30px/.9 "Barlow Condensed",Impact,sans-serif;letter-spacing:.04em}
+    .brand span{color:var(--green)}
+    .nav{display:flex;gap:28px;color:var(--muted);font-size:13px}
+    .nav a:hover{color:var(--green)}
+    .status{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);border:1px solid #425b25;padding:7px 10px;border-radius:2px}
+    .hero{min-height:660px;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;padding:90px 0 100px;position:relative}
+    .eyebrow{color:var(--green);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+    h1,h2,h3{font-family:"Barlow Condensed",Impact,sans-serif;text-transform:uppercase;margin:0;line-height:.94}
+    h1{font-size:clamp(68px,10vw,126px);letter-spacing:-.025em;margin:20px 0 24px}
+    h1 em{font-style:normal;color:var(--green)}
+    .lead{font-size:17px;line-height:1.8;color:#b3bcb5;max-width:540px}
+    .actions{display:flex;gap:14px;align-items:center;margin-top:34px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--green);color:#10150b;border:1px solid var(--green);transition:.2s}
+    .btn:hover{background:#d0ff82;transform:translateY(-2px)}
+    .text-link{font-size:12px;color:#c5cec7;border-bottom:1px solid #59635b;padding:12px 0}
+    .hero-art{min-height:390px;border:1px solid var(--line);background:linear-gradient(145deg,#121914,#090c0a 70%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid rgba(183,255,56,.22);border-radius:50%;width:340px;height:340px}
+    .hero-art:after{width:240px;height:240px}
+    .crosshair{position:absolute;width:100%;height:1px;background:rgba(183,255,56,.16);top:50%}
+    .crosshair:after{content:"";position:absolute;height:100%;width:1px;background:rgba(183,255,56,.16);left:50%}
+    .mark{font:900 clamp(90px,15vw,170px)/.8 "Barlow Condensed",Impact,sans-serif;letter-spacing:-.07em;z-index:1;text-shadow:0 0 45px rgba(183,255,56,.13)}
+    .mark span{color:var(--green)}
+    .corner{position:absolute;font:600 11px "Barlow Condensed",sans-serif;letter-spacing:.18em;color:#7f8a81;text-transform:uppercase}
+    .c1{top:18px;left:20px}.c2{bottom:18px;right:20px}
+    .section{padding:88px 0;border-top:1px solid rgba(255,255,255,.07)}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:38px}
+    h2{font-size:clamp(44px,6vw,68px)}
+    .section-head p{color:var(--muted);max-width:420px;margin:0;font-size:14px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{background:var(--panel);border:1px solid var(--line);padding:26px;min-height:210px}
+    .num{font:700 16px "Barlow Condensed",sans-serif;color:var(--green);letter-spacing:.1em}
+    h3{font-size:32px;margin:26px 0 12px}
+    .card p{font-size:13px;color:var(--muted);margin:0;line-height:1.8}
+    .manifesto{background:var(--green);color:#10150b;padding:58px 42px;display:flex;justify-content:space-between;align-items:center;gap:30px}
+    .manifesto h2{font-size:clamp(44px,7vw,78px);max-width:680px}
+    .manifesto p{max-width:260px;font-size:13px;font-weight:600;line-height:1.8}
+    .footer{padding:34px 0 46px;display:flex;justify-content:space-between;gap:20px;align-items:center;color:#78827a;font-size:11px}
+    .footer strong{font:700 22px "Barlow Condensed",sans-serif;letter-spacing:.08em;color:#e9eee9}
+    .footer strong span{color:var(--green)}
+    @media(max-width:760px){.nav{display:none}.hero{grid-template-columns:1fr;padding:70px 0;gap:42px;min-height:auto}.hero-art{min-height:300px}.grid{grid-template-columns:1fr}.section{padding:64px 0}.section-head{display:block}.section-head p{margin-top:18px}.manifesto{padding:36px 26px;display:block}.manifesto p{margin-top:22px}.footer{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="#" aria-label="OneFix home">ONE<span>FIX</span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#method">METHOD</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a>
+    </nav>
+    <div class="status">Independent project · MVP</div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div>
+        <div class="eyebrow">Counter-Strike 2 · Performance insights</div>
+        <h1>ONE PLAYER.<br>ONE MISTAKE.<br><em>ONE FIX.</em></h1>
+        <p class="lead">Better aim is not the only way to improve. OneFix is an independent project exploring how focused feedback on decisions, positioning, economy and player behavior can help CS2 players improve one step at a time.</p>
+        <div class="actions">
+          <a class="btn" href="https://t.me/onefix_gg_bot" target="_blank" rel="noopener noreferrer">Contact OneFix</a>
+          <a class="text-link" href="#method">Discover the method&nbsp; ↘</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="OneFix graphic">
+        <div class="crosshair"></div>
+        <div class="corner c1">ANALYZE / LEARN / IMPROVE</div>
+        <div class="mark">1<span>F</span></div>
+        <div class="corner c2">FOCUSED PLAYER DEVELOPMENT</div>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">The OneFix approach</div><h2>Less noise.<br>More impact.</h2></div>
+          <p>Instead of overwhelming players with a long list of generic tips, OneFix explores one actionable improvement supported by available match data.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="num">01 / ANALYZE</div><h3>Find the pattern</h3><p>Review available match statistics and gameplay evidence to look for recurring situations—not isolated bad rounds.</p></article>
+          <article class="card"><div class="num">02 / UNDERSTAND</div><h3>Find the cause</h3><p>Consider the context behind decisions: positioning, timing, economy, utility and team play.</p></article>
+          <article class="card"><div class="num">03 / IMPROVE</div><h3>One clear action</h3><p>Turn the strongest supported insight into a practical behavior to test in upcoming matches.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="manifesto">
+          <h2>Make one change.<br>Make it count.</h2>
+          <p>OneFix is currently an independent MVP project. The analysis workflow is being tested and refined with real players.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer" id="contact">
+    <strong>ONE<span>FIX</span></strong>
+    <div>Independent project · MVP development</div>
+    <div><a href="https://t.me/onefix_gg_bot" target="_blank" rel="noopener noreferrer">Telegram: @onefix_gg_bot</a></div>
+    <div>Not affiliated with Valve or FACEIT.</div>
+  </footer>
+</body>
+</html>
